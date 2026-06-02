@@ -34,5 +34,46 @@ In this HIDS lab, Snort was deployed as a host-based sensor running directly on 
 The main configuration and local rules files were configured to target the local host network and optimized for proper initialization. All custom rules were correctly parsed and positioned before trailing rule modifiers (such as nocase; and flow;) to prevent syntax errors
 
 *Rule Development*: Custom rules were created in local.rules to detect attacks, demonstrating the ability to write custom logic for multiple protocols and track an attack from initial access to post exploitation such as interactive command detection, flagging suspicious command executions (whoami & id). Rules were implemented to flag unauthorized exploitation attempts that target open ports.
-<img src="Localrules.png" width="800" alt="Local rules">
 
+<img src="Localrules.png" width="660" alt="Local rules">
+
+
+
+
+
+
+## Threat detection & Simulation:
+A multi stage threat simulation was executed upon testing the validity of the HIDS detection:
+
+*Port Scanning*: An initial port scan was performed on the MS2 machine triggering TCP & UDP port scan rules. 
+
+*HIDS Trigger*: A second aggressive & thorough reconnaissance scan was executed on the MS2 host machine, using nmap -A, triggering ICMP, SYN Scan, & FTP rules. The scan outlined the attack surfaces from the Kali Linux terminal revealing open & vulnerable ports (Port 21 (FTP), Port 22 (SSH), and Port 23 (Telnet)). 
+
+<img src="nmap -A.png" width="600" alt="nmap -a"><img src="MS2 Portscan.png" width="410" alt="MS2 Portscan"> 
+
+
+*Service Verification*: Following the open ports discovered mapped out on the Kali terminal, manual interactions on ports 22,23 and curl web commands on port 80 were executed, triggering the configured rules (curl -I rule sending a Head request to the host system upon interaction with port 80) 
+
+<img src="Curl HTTP request.png" width="600" alt="Curl HTTP"> <img src="SSH login.png" width="310" alt="SSH service login"><img src="Telnet login.png" width="310" alt="Telnet login">
+
+
+*SMB Service Enumeration*: "smbclient" Enumeration tools were initiated manually against the target host generating traffic signatures, capturing unauthorised enumeration attempts
+
+<img src="SMB login.png" width="410" alt="SMB Interface"><img src="SMB Client connection.png" width="410" alt="SMB Client Connection"> 
+
+
+*Exploitation & Backdoor Authentication*: Upon targeting the open FTP port, 21, an adversarial trigger performed to exploit the "vsftpd 2.3.4" backdoor vulnerability. The FTP authentication rule was immediately triggered on the target host as an alert. The custom root shell raising a high priority alert on using Netcat. Upon successful trigger of the backdoor configuration of port 21, the "whoami" command was executed from the Kali Linux terminal confirming control of the host system was achieved.
+ <img src="FTP login.png" width="700" alt="FTP login"><img src="VSFTPD Backdoor Execution.png" width="700" alt="Backdoor verification"><img src="VSFTPD Backdoor Command.png" width="700" alt="Backdoor command"> 
+
+
+ *VNC  Exploitation & Remote Access*: A graphical user interface (GUI) was established on simulation by interacting with the VNC service. A VNC connection was initiated from the Kali Linux terminal and successfully bypassed standard security measures and a remote session was generated.
+
+ <img src="VNC login.png" width="410" alt="VNC Authentication Interface"> <img src="VNC Viewer.png" width="410" alt="Active VNC Desktop Session">
+
+
+
+
+## Post Incident Analysis & Conclusion:
+Following full threat simulations and custom deployed snort rules detecting a series of targets on the target host, Metasploitable 2, the detection engine proved highly effective.
+This defensive framework has ensured precise alerts with a detection rate near 100%, protecting network environments by identifying malicious activity.
+ 
