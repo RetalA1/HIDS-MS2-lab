@@ -64,7 +64,9 @@ A multi-stage penetration test was conducted to validate the detection accuracy 
 
 
 *Exploitation & Backdoor Authentication*: Upon targeting the open FTP port, 21, a trigger was performed to exploit the "vsftpd 2.3.4" backdoor vulnerability. 
+
 The FTP authentication rule was immediately triggered on the target host as an alert. 
+
 The custom root shell raising a high priority alert on using Netcat. Upon successful trigger of the backdoor configuration of port 21, the "whoami" command was executed from the Kali Linux terminal confirming control of the host system was achieved.
  <img src="FTP login.png" width="700" alt="FTP login"><img src="VSFTPD Backdoor Execution.png" width="700" alt="Backdoor verification"><img src="VSFTPD Backdoor Command.png" width="700" alt="Backdoor command"> 
 
@@ -77,6 +79,6 @@ The custom root shell raising a high priority alert on using Netcat. Upon succes
 
 
 ## Post Incident Analysis & Conclusion:
-Following full threat simulations and custom deployed snort rules detecting a series of targets on the target host, Metasploitable 2, the detection engine proved highly effective.
+Following full penetration testing and custom deployed snort rules detecting a series of targets on the target host, Metasploitable 2, the detection engine proved highly effective.
 This defensive framework has ensured precise alerts with a detection rate near 100%, protecting network environments by identifying malicious activity.
  
