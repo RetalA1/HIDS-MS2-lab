@@ -1,5 +1,5 @@
 # HIDS-MS2-lab
-A HIDS engineering lab focused on adversarial simulation, using Snort to detect and alert on exploits against Metasploitable 2
+A HIDS lab using Snort to detect and alert on penetration testing exploits against Metasploitable 2.
 
 
 
@@ -42,8 +42,8 @@ The main configuration and local rules files were configured to target the local
 
 
 
-## Threat detection & Simulation:
-A multi stage threat simulation was executed upon testing the validity of the HIDS detection:
+## Threat detection & Penetration testing:
+A multi-stage penetration test was conducted to validate the detection accuracy of the HIDS framework.
 
 *Port Scanning*: An initial port scan was performed on the MS2 machine triggering TCP & UDP port scan rules. 
 
@@ -52,7 +52,8 @@ A multi stage threat simulation was executed upon testing the validity of the HI
 <img src="nmap -A.png" width="600" alt="nmap -a"><img src="MS2 Portscan.png" width="410" alt="MS2 Portscan"> 
 
 
-*Service Verification*: Following the open ports discovered mapped out on the Kali terminal, manual interactions on ports 22,23 and curl web commands on port 80 were executed, triggering the configured rules (curl -I rule sending a Head request to the host system upon interaction with port 80) 
+*Service Verification*: Following the open ports discovered mapped out on the Kali terminal, manual interactions on ports 22,23 and curl web commands on port 80 were executed,  These interactions successfully tripped the configured protocol rules (curl -I on port 80), capturing the HTTP HEAD request rule.
+
 
 <img src="Curl HTTP request.png" width="600" alt="Curl HTTP"> <img src="SSH login.png" width="310" alt="SSH service login"><img src="Telnet login.png" width="310" alt="Telnet login">
 
@@ -62,11 +63,13 @@ A multi stage threat simulation was executed upon testing the validity of the HI
 <img src="SMB login.png" width="410" alt="SMB Interface"><img src="SMB Client connection.png" width="410" alt="SMB Client Connection"> 
 
 
-*Exploitation & Backdoor Authentication*: Upon targeting the open FTP port, 21, an adversarial trigger performed to exploit the "vsftpd 2.3.4" backdoor vulnerability. The FTP authentication rule was immediately triggered on the target host as an alert. The custom root shell raising a high priority alert on using Netcat. Upon successful trigger of the backdoor configuration of port 21, the "whoami" command was executed from the Kali Linux terminal confirming control of the host system was achieved.
+*Exploitation & Backdoor Authentication*: Upon targeting the open FTP port, 21, a trigger was performed to exploit the "vsftpd 2.3.4" backdoor vulnerability. 
+The FTP authentication rule was immediately triggered on the target host as an alert. 
+The custom root shell raising a high priority alert on using Netcat. Upon successful trigger of the backdoor configuration of port 21, the "whoami" command was executed from the Kali Linux terminal confirming control of the host system was achieved.
  <img src="FTP login.png" width="700" alt="FTP login"><img src="VSFTPD Backdoor Execution.png" width="700" alt="Backdoor verification"><img src="VSFTPD Backdoor Command.png" width="700" alt="Backdoor command"> 
 
 
- *VNC  Exploitation & Remote Access*: A graphical user interface (GUI) was established on simulation by interacting with the VNC service. A VNC connection was initiated from the Kali Linux terminal and successfully bypassed standard security measures and a remote session was generated.
+ *VNC  Exploitation & Remote Access*: Due to a weak VNC password detected by Nessus, a session was successfully initiated on Metasploitable 2 from the attacker machine (Kali)
 
  <img src="VNC login.png" width="410" alt="VNC Authentication Interface"> <img src="VNC Viewer.png" width="410" alt="Active VNC Desktop Session">
 
