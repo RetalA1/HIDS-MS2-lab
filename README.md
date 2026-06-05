@@ -36,6 +36,7 @@ The main configuration and local rules files were configured to target the local
 *Rule Development*: Custom rules were created in local.rules to detect attacks, demonstrating the ability to write custom logic for multiple protocols and track an attack from initial access to post exploitation such as interactive command detection, flagging suspicious command executions (whoami & id). Rules were implemented to flag unauthorized exploitation attempts that target open ports.
 
 <img src="Localrules.png" width="660" alt="Local rules">
+Figure 1: Local configured rules
 
 
 
