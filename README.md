@@ -77,7 +77,7 @@ Figure 4: Network share enumeration using smbclient.
 The FTP authentication rule was immediately triggered on the target host as an alert. 
 
 The custom root shell raising a high priority alert on using Netcat. Upon successful trigger of the backdoor configuration of port 21, the "whoami" command was executed from the Kali Linux terminal confirming control of the host system was achieved.
- <img src="FTP login.png" width="700" alt="FTP login"><img src="VSFTPD Backdoor Execution.png" width="700" alt="Backdoor verification"><img src="VSFTPD Backdoor Command.png" width="700" alt="Backdoor command"> 
+ <img src="FTP login.png" width="700" alt="FTP login"><img src="VSFTPD Backdoor Execution.png" width="700" alt="Backdoor verification"><img src="VSFTPD Backdoor Command.png" width="700" alt="Backdoor command"><img src="Root Bind Shell.png" width="700" alt="Bind shell"> 
 
  
 Figure 5: vsftpd 2.3.4 backdoor exploitation and root command execution.
