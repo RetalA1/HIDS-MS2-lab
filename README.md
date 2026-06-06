@@ -67,7 +67,7 @@ Figure 3: Manual interaction via HTTP, SSH, and Telnet.
 
 *SMB Service Enumeration*: "smbclient" Enumeration tools were initiated manually against the target host generating traffic signatures, capturing unauthorised enumeration attempts
 
-<img src="SMB login.png" width="410" alt="SMB Interface"><img src="SMB Client connection.png" width="410" alt="SMB Client Connection"> 
+<img src="SMB login.png" width="410" alt="SMB Interface"><img src="SMB tmp share contents.png" width="410" alt="SMB Contents">
 
 Figure 4: Network share enumeration using smbclient.
 
